@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import LazySection from './components/LazySection';
+import { SchemaScripts } from './components/SchemaScripts';
 import './styles/global.css';
 
 // Lazy load non-critical sections
@@ -14,6 +15,7 @@ const Footer = lazy(() => import('./components/Footer'));
 export default function App() {
   return (
     <div className="portfolio-root">
+      <SchemaScripts />
       <a href="#main" className="skip-link">Skip to content</a>
       <Header />
       <main id="main">

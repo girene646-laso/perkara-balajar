@@ -7,15 +7,17 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'react-vendor': ['react', 'react-dom'],
         },
       },
     },
     cssCodeSplit: true,
-    minify: 'esbuild',
+    minify: 'terser',
     target: 'es2020',
+    sourcemap: false,
+    reportCompressedSize: false,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
+    include: ['react', 'react-dom'],
   },
 });
