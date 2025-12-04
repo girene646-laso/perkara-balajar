@@ -13,7 +13,7 @@ export const projects: Project[] = [
     name: 'Personal Portfolio Website',
     description: 'This website! Built with React, TypeScript, and Vite. Features a responsive layout, accessible navigation, and a contact form.',
     tech: ['React', 'TypeScript', 'Vite', 'CSS'],
-    repo: 'https://github.com/youruser/portfolio',
+    repo: 'https://github.com/girene646-laso/perkara-besar-yang-keliatan-kecil',
     demo: 'https://your-portfolio-demo-link.com'
   }
 ];
