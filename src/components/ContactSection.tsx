@@ -19,7 +19,11 @@ function ContactSection() {
 
   return (
     <section id="contact" className="section" aria-label="Contact form">
-      <h2 className="section-title">Contact</h2>
+      <h2 className="section-title">Let's Work Together</h2>
+      <p className="section-subtitle">
+        I'm currently available for freelance projects and full-time opportunities. 
+        Let's discuss how we can work together.
+      </p>
       <div className="contact-wrapper">
         <form onSubmit={onSubmit} className="contact-form" aria-live="polite">
           <label>
@@ -34,13 +38,30 @@ function ContactSection() {
             <span>Message</span>
             <textarea name="message" value={form.message} onChange={onChange} rows={5} required />
           </label>
-          <button className="button primary" type="submit">Send</button>
-          {sent && <div className="sent-note" role="status">Message queued ✔</div>}
+          <button className="button primary" type="submit">Send Message</button>
+          {sent && <div className="sent-note" role="status">Message sent successfully ✔</div>}
         </form>
-        <div className="alt-contacts">
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=farrellfyelo@gmail.com" target="_blank" rel="noopener noreferrer">farrellfyelo@gmail.com</a>
-          <a href="https://github.com/girene646-laso" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="https://www.instagram.com/prlpyl/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <div className="contact-info">
+          <h3>Get In Touch</h3>
+          <div className="alt-contacts">
+            <a href="mailto:farrellfyelo@gmail.com" className="contact-link">
+              <span className="icon">📧</span>
+              <span>farrellfyelo@gmail.com</span>
+            </a>
+            <a href="https://github.com/girene646-laso" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <span className="icon">💻</span>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.instagram.com/prlpyl/" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <span className="icon">📱</span>
+              <span>Instagram</span>
+            </a>
+          </div>
+          <div className="resume-download">
+            <a href="/resume.pdf" download className="button">
+              Download Resume (PDF)
+            </a>
+          </div>
         </div>
       </div>
     </section>
