@@ -45,15 +45,12 @@ function ContactSection() {
           <h3>Get In Touch</h3>
           <div className="alt-contacts">
             <a href="mailto:farrellfyelo@gmail.com" className="contact-link">
-              <span className="icon">📧</span>
               <span>farrellfyelo@gmail.com</span>
             </a>
             <a href="https://github.com/girene646-laso" target="_blank" rel="noopener noreferrer" className="contact-link">
-              <span className="icon">💻</span>
               <span>GitHub</span>
             </a>
             <a href="https://www.instagram.com/prlpyl/" target="_blank" rel="noopener noreferrer" className="contact-link">
-              <span className="icon">📱</span>
               <span>Instagram</span>
             </a>
           </div>

@@ -1,8 +1,8 @@
 const skillGroups: { title: string; items: string[] }[] = [
-  { title: 'Frontend', items: ['Ngelantur'] },
-  { title: 'Backend', items: ['Bahasa Kalbu'] },
-  { title: 'DevOps', items: ['Arknights'] },
-  { title: 'Testing', items: ['Elden Ring'] },
+  { title: 'Frontend', items: ['React', 'TypeScript', 'HTML/CSS', 'Vite'] },
+  { title: 'Backend', items: ['Node.js', 'REST APIs', 'Git'] },
+  { title: 'Tools & Libraries', items: ['VS Code', 'npm', 'ESLint'] },
+  { title: 'Concepts', items: ['PWA', 'Code Splitting', 'Accessibility', 'Performance'] },
 ];
 
 function SkillsSection() {
