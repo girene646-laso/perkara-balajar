@@ -1,16 +1,15 @@
 import { lazy, Suspense } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import LazySection from './components/LazySection';
-import { SchemaScripts } from './components/SchemaScripts';
+import { Header, Hero, LazySection, Footer } from './components';
+import { SchemaScripts } from './components/ui';
 import './styles/global.css';
 
 // Lazy load non-critical sections
-const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
-const AboutSection = lazy(() => import('./components/AboutSection'));
-const SkillsSection = lazy(() => import('./components/SkillsSection'));
-const ContactSection = lazy(() => import('./components/ContactSection'));
-const Footer = lazy(() => import('./components/Footer'));
+const { ProjectsSection, AboutSection, SkillsSection, ContactSection } = {
+  ProjectsSection: lazy(() => import('./components/ProjectsSection')),
+  AboutSection: lazy(() => import('./components/AboutSection')),
+  SkillsSection: lazy(() => import('./components/SkillsSection')),
+  ContactSection: lazy(() => import('./components/ContactSection')),
+};
 
 export default function App() {
   return (

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { personSchema, websiteSchema, organizationSchema } from '../data/structured-data';
+import { personSchema, websiteSchema, organizationSchema } from '../lib';
 
 export function SchemaScripts() {
   useEffect(() => {

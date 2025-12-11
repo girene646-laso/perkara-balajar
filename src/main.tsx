@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { initServiceWorker } from './utils/pwa';
+import { initServiceWorker } from './lib';
 
 // Initialize PWA support
 initServiceWorker();
