@@ -16,8 +16,12 @@ export default defineConfig({
     target: 'es2020',
     sourcemap: false,
     reportCompressedSize: false,
+    chunkSizeWarningLimit: 600,
   },
   optimizeDeps: {
     include: ['react', 'react-dom'],
+  },
+  server: {
+    preTransformRequests: false,
   },
 });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState, useCallback } from 'react';
 
 const sections = [
   { id: 'hero', label: 'Home' },
@@ -6,9 +6,9 @@ const sections = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' }
-];
+] as const;
 
-export default function Header() {
+function Header() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const saved = localStorage.getItem('theme');
     if (saved === 'light' || saved === 'dark') {
@@ -22,7 +22,9 @@ export default function Header() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  }, []);
 
   return (
     <header className="site-header" role="banner">
@@ -42,3 +44,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default memo(Header);

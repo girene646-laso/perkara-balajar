@@ -1,15 +1,25 @@
-import { lazy, Suspense } from 'react';
-import { Header, Hero, LazySection, Footer } from './components';
+import { lazy, Suspense, ReactNode } from 'react';
+import { Header, Hero, LazySection } from './components';
 import { SchemaScripts } from './components/ui';
 import './styles/global.css';
 
-// Lazy load non-critical sections
-const { ProjectsSection, AboutSection, SkillsSection, ContactSection } = {
-  ProjectsSection: lazy(() => import('./components/ProjectsSection')),
-  AboutSection: lazy(() => import('./components/AboutSection')),
-  SkillsSection: lazy(() => import('./components/SkillsSection')),
-  ContactSection: lazy(() => import('./components/ContactSection')),
-};
+const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
+const AboutSection = lazy(() => import('./components/AboutSection'));
+const SkillsSection = lazy(() => import('./components/SkillsSection'));
+const ContactSection = lazy(() => import('./components/ContactSection'));
+const Footer = lazy(() => import('./components/Footer'));
+
+const SectionFallback = () => <div style={{ minHeight: '200px' }} />;
+
+interface LazySectionWrapperProps {
+  children: ReactNode;
+}
+
+const LazySectionWrapper = ({ children }: LazySectionWrapperProps) => (
+  <Suspense fallback={<SectionFallback />}>
+    <LazySection>{children}</LazySection>
+  </Suspense>
+);
 
 export default function App() {
   return (
@@ -19,26 +29,18 @@ export default function App() {
       <Header />
       <main id="main">
         <Hero />
-        <Suspense fallback={<div style={{ minHeight: '200px' }} />}>
-          <LazySection>
-            <ProjectsSection />
-          </LazySection>
-        </Suspense>
-        <Suspense fallback={<div style={{ minHeight: '200px' }} />}>
-          <LazySection>
-            <AboutSection />
-          </LazySection>
-        </Suspense>
-        <Suspense fallback={<div style={{ minHeight: '200px' }} />}>
-          <LazySection>
-            <SkillsSection />
-          </LazySection>
-        </Suspense>
-        <Suspense fallback={<div style={{ minHeight: '200px' }} />}>
-          <LazySection>
-            <ContactSection />
-          </LazySection>
-        </Suspense>
+        <LazySectionWrapper>
+          <ProjectsSection />
+        </LazySectionWrapper>
+        <LazySectionWrapper>
+          <AboutSection />
+        </LazySectionWrapper>
+        <LazySectionWrapper>
+          <SkillsSection />
+        </LazySectionWrapper>
+        <LazySectionWrapper>
+          <ContactSection />
+        </LazySectionWrapper>
       </main>
       <Suspense fallback={null}>
         <Footer />

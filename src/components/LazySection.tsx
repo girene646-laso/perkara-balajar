@@ -1,13 +1,18 @@
-import { useEffect, useRef, useState, ReactNode } from 'react';
+import { useEffect, useRef, useState, ReactNode, useMemo, memo } from 'react';
 
 interface LazySectionProps {
   children: ReactNode;
   threshold?: number;
 }
 
-export default function LazySection({ children, threshold = 0.1 }: LazySectionProps) {
+function LazySection({ children, threshold = 0.1 }: LazySectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const observerOptions = useMemo(() => ({
+    threshold,
+    rootMargin: '50px'
+  }), [threshold]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -17,7 +22,7 @@ export default function LazySection({ children, threshold = 0.1 }: LazySectionPr
           observer.disconnect();
         }
       },
-      { threshold, rootMargin: '50px' }
+      observerOptions
     );
 
     if (ref.current) {
@@ -25,7 +30,7 @@ export default function LazySection({ children, threshold = 0.1 }: LazySectionPr
     }
 
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [observerOptions]);
 
   return (
     <div ref={ref}>
@@ -33,3 +38,5 @@ export default function LazySection({ children, threshold = 0.1 }: LazySectionPr
     </div>
   );
 }
+
+export default memo(LazySection);
