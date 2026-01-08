@@ -17,26 +17,38 @@ function Header() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
+  const [isVisible, setIsVisible] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleTheme = useCallback(() => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   }, []);
 
   return (
-    <header className="site-header" role="banner">
+    <header className={`site-header ${isVisible ? 'visible' : 'hidden'}`} role="banner">
       <div className="nav-inner">
         <div className="brand" aria-label="Site logo">Foxxy</div>
-        <nav aria-label="Primary">
-          <div className="nav-links">
-            {sections.map(s => (
-              <a key={s.id} href={`#${s.id}`}>{s.label}</a>
-            ))}
-          </div>
-        </nav>
         <button className="button" onClick={toggleTheme} aria-label="Toggle theme">
           {theme === 'dark' ? 'Light' : 'Dark'} mode
         </button>

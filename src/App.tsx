@@ -58,7 +58,6 @@ export default function App() {
   return (
     <div className="portfolio-root">
       <SchemaScripts />
-      <a href="#main" className="skip-link">Skip to content</a>
       <Header />
       <main id="main" className="twitter-feed">
         <div className="feed-container">
