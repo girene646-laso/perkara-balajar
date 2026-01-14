@@ -23,10 +23,10 @@ function AboutSection() {
           <div className="quick-facts">
             <h3>Quick Facts</h3>
             <ul>
-              <li>📍 Based in Indonesia</li>
-              <li>💼 Open to full-time opportunities and freelance projects</li>
-              <li>🎮 Gamer at heart - Strategy enthusiast</li>
-              <li>📚 Currently exploring advanced React patterns and performance optimization</li>
+              <li>Based in Indonesia</li>
+              <li>Open to full-time opportunities and freelance projects</li>
+              <li>Gamer at heart - Strategy enthusiast</li>
+              <li>Currently exploring advanced React patterns and performance optimization</li>
             </ul>
           </div>
         </div>
