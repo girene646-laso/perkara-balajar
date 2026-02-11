@@ -1,4 +1,4 @@
-import { lazy, Suspense, ReactNode } from 'react';
+import { lazy, Suspense, ReactNode, useEffect, useRef, useState } from 'react';
 import { Header } from './components';
 import Hero from './components/Hero';
 import { SchemaScripts } from './components/ui';
@@ -21,9 +21,6 @@ const LazySectionWrapper = ({ children }: LazySectionWrapperProps) => (
     <LazySection>{children}</LazySection>
   </Suspense>
 );
-
-// Simple LazySection component inline since we removed it from imports
-import { useEffect, useRef, useState } from 'react';
 
 function LazySection({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(false);

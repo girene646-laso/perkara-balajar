@@ -8,7 +8,7 @@ const navLinks = [
 
 function Header() {
   return (
-    <header className="site-header discord-header" role="banner">
+    <header className="site-header" role="banner">
       <div className="nav-inner discord-nav-inner">
         <div className="brand discord-brand" aria-label="Site logo">
           <span className="brand-mark" aria-hidden="true" />
