@@ -1,4 +1,4 @@
-import { lazy, Suspense, ReactNode, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Header } from './components';
 import Hero from './components/Hero';
 import { SchemaScripts } from './components/ui';
@@ -52,6 +52,28 @@ function LazySection({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
+  // Use useLayoutEffect to scroll before browser paints
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
+  useEffect(() => {
+    // Additional scroll reset after render
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Remove any hash from URL that might cause scroll
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    // Enable smooth scroll after initial load
+    setTimeout(() => {
+      document.documentElement.classList.add('loaded');
+    }, 100);
+  }, []);
+
   return (
     <div className="portfolio-root">
       <SchemaScripts />

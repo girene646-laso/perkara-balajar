@@ -1,9 +1,9 @@
 import { memo } from 'react';
 
 const navLinks = [
-  { label: 'Download', href: '#projects' },
-  { label: 'Safety', href: '#about' },
-  { label: 'Support', href: '#contact' }
+  { label: 'Projects', href: '#projects' },
+  { label: 'About Me', href: '#about' },
+  { label: 'Contact', href: '#contact' }
 ] as const;
 
 function Header() {
